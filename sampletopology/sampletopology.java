@@ -1,4 +1,4 @@
-package topogrpc;
+package sampletopology;
 
 
 import config.ConfigService;
@@ -19,8 +19,8 @@ import org.onosproject.grpc.grpcintegration.models.TopoServiceGrpc.TopoServiceSt
 /**
  * A sample application to retrieve topology information using gRPC API.
  */
-public class topogrpc {
-  private static Logger log = Logger.getLogger(topogrpc.class);
+public class sampletopology {
+  private static Logger log = Logger.getLogger(sampletopology.class);
 
   public static void main(String[] args) {
 

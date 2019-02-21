@@ -17,18 +17,18 @@ COMPILE_DEPS = COMPILE + [
 #java_binary(
 #    name = "topogrpc_deploy",
 #    srcs = glob(["*.java"]),
-#    main_class = "topogrpc.topogrpc",
+#    main_class = "sampletopology.sampletopology",
 #    deps = COMPILE_DEPS,
 #)
 
 java_image(
-    name = "topogrpc_image",
+    name = "sampletopology_image",
     srcs = glob(["*.java"]),
     data = [
         ":BUILD",
         "//resources:config.properties",
         "//resources:log4j.properties",
     ],
-    main_class = "topogrpc.topogrpc",
+    main_class = "sampletopology.sampletopology",
     deps = COMPILE_DEPS,
 )
