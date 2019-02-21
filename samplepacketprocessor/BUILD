@@ -5,7 +5,8 @@ COMPILE_DEPS = COMPILE + [
     "@dnos_core_grpc//protobuf/proto:onos-core-protobuf-services-proto",
     "@dnos_core_grpc//protobuf/proto:onos-protobuf-models-proto",
     "@dnos_services//config:dnos-services-config-service",
-    "@com_google_protobuf//:protobuf_java",
+    #com_google_protobuf//:protobuf_java",
+    "@com_google_api_grpc_proto_google_common_protos//jar",
     "@openflowj//jar",
     "@io_netty_netty//jar",
     "@com_google_guava_guava//jar",
@@ -23,7 +24,7 @@ COMPILE_DEPS = COMPILE + [
 #)
 
 java_image(
-    name = "samplepacketprocessorgrpc_image",
+    name = "samplepacketprocessor_image",
     srcs = glob(["*.java"]),
     data = [
         ":BUILD",

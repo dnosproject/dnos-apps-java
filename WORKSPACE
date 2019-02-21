@@ -1,4 +1,4 @@
-workspace(name = "org_dnosproject_dnos_apps_java")
+workspace(name = "org_dnosproject_dnos_apps")
 
 #### Docker related repos
 
