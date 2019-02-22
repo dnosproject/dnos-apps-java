@@ -6,8 +6,11 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import org.apache.log4j.Logger;
+import org.onosproject.grpc.grpcintegration.models.ControlMessagesProto.HostCountProto;
 import org.onosproject.grpc.grpcintegration.models.ControlMessagesProto.Hosts;
 import org.onosproject.grpc.grpcintegration.models.ControlMessagesProto.Empty;
+import org.onosproject.grpc.grpcintegration.models.HostServiceGrpc;
+import org.onosproject.grpc.grpcintegration.models.HostServiceGrpc.HostServiceStub;
 import org.onosproject.grpc.net.models.HostProtoOuterClass.HostProto;
 import org.onosproject.grpc.net.topology.models.TopologyEdgeProtoOuterClass.TopologyEdgeProto;
 import org.onosproject.grpc.net.topology.models.TopologyGraphProtoOuterClass.TopologyGraphProto;
@@ -34,6 +37,7 @@ public class sampletopology {
     controllerIP = configService.getConfig().getControllerIp();
     grpcPort = configService.getConfig().getGrpcPort();
     TopoServiceStub topologyServiceStub;
+    HostServiceStub hostServiceStub;
 
     // Creates a gRPC channel
     channel =
@@ -43,6 +47,7 @@ public class sampletopology {
                 .build();
 
     topologyServiceStub = TopoServiceGrpc.newStub(channel);
+    hostServiceStub = HostServiceGrpc.newStub(channel);
     Empty empty = Empty.newBuilder().build();
 
     // Retrieves current topology information
@@ -83,7 +88,7 @@ public class sampletopology {
     });
 
     // Retrieves list of hosts in the network topology
-    topologyServiceStub.getHosts(empty, new StreamObserver<Hosts>() {
+    hostServiceStub.getHosts(empty, new StreamObserver<Hosts>() {
         @Override
         public void onNext(Hosts value) {
             for(HostProto hostProto:value.getHostList()) {
@@ -93,6 +98,20 @@ public class sampletopology {
                 hostProto.getLocation().getConnectPoint().getDeviceId()
                 + ":" + hostProto.getLocation().getConnectPoint().getPortNumber());
             }
+        }
+
+        @Override
+        public void onError(Throwable t) {}
+
+        @Override
+        public void onCompleted() {}
+    });
+
+    // Returns number of hosts in the network topology.
+    hostServiceStub.getHostCount(empty, new StreamObserver<HostCountProto>() {
+        @Override
+        public void onNext(HostCountProto value) {
+            log.info("Number of Hosts:" + value.getCount());
         }
 
         @Override
