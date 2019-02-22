@@ -21,13 +21,13 @@ COMPILE_DEPS = COMPILE + [
 #)
 
 java_image(
-    name = "sampletopology_image",
+    name = "samplehostservice_image",
     srcs = glob(["*.java"]),
     data = [
         ":BUILD",
         "//resources:config.properties",
         "//resources:log4j.properties",
     ],
-    main_class = "sampletopology.sampletopology",
+    main_class = "samplehostservice.samplehostservice",
     deps = COMPILE_DEPS,
 )
