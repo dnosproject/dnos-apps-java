@@ -54,7 +54,7 @@ public class samplehostservice {
                 .usePlaintext()
                 .build();
 
-    // Creates hostService anf topoService stubs and assigns them to the gRPC channel.
+    // Creates hostService and topoService stubs and assigns them to the gRPC channel.
 
     hostServiceStub = HostServiceGrpc.newStub(channel);
     topologyServiceStub = TopoServiceGrpc.newStub(channel);

@@ -7,8 +7,8 @@ COMPILE_DEPS = COMPILE + [
     "@dnos_services//config:dnos-services-config-service",
     "@com_google_api_grpc_proto_google_common_protos//jar",
     "@io_netty_netty//jar",
-    "@com_google_guava_guava//jar",
     "@onlab_misc//jar",
+    "@com_google_guava_guava//jar",
     "@io_grpc_grpc_java//core",
     "@io_grpc_grpc_java//stub",
     "@io_grpc_grpc_java//netty",
@@ -22,13 +22,13 @@ COMPILE_DEPS = COMPILE + [
 #)
 
 java_image(
-    name = "sampletopology_image",
+    name = "sampleflowservice_image",
     srcs = glob(["*.java"]),
     data = [
         ":BUILD",
         "//resources:config.properties",
         "//resources:log4j.properties",
     ],
-    main_class = "sampletopology.sampletopology",
+    main_class = "sampleflowservice.sampleflowservice",
     deps = COMPILE_DEPS,
 )

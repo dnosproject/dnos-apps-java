@@ -81,7 +81,7 @@ git_repository(
 ## Java protobuf models
 git_repository(
     name = "dnos_core_grpc",
-    commit = "12520c6d807e0abebf67b908b6d79fa4a355378a",
+    commit = "33f9e7d70a291ee6dd08ad126dece11ff010553d",
     remote = "https://github.com/dnosproject/dnos-core-grpc",
 )
 
